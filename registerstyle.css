@@ -1,0 +1,21 @@
+h1{
+    font-weight: bold;
+    font-style: oblique;
+}
+body{
+    text-align: center;
+    background-color: rgb(192, 172, 209) ;
+}
+
+footer {
+    height: 50px;
+    background-color: rgb(3, 3, 5);
+    color: white;
+  }
+  
+  footer h6 {
+    margin-top:0;
+    text-align: center;
+    padding-top: 20px;
+  }
+  

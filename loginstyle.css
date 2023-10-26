@@ -1,0 +1,57 @@
+h1{
+    font-weight: bold;
+    font-style: oblique;
+}
+/*body{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+    background-color: rgb(192, 172, 209);
+    background-image: url('images/loginimage.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;   
+}*/
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('images/loginimage.jpg'); /* Replace with your background image URL */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .content {
+    z-index: 1;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+  }
+  .header {
+    z-index: 1;
+    color: white;
+    font-size: 24px;
+  }
+
+input[type="submit"] {
+    width: 230px; /* Set the width to make the button wider */
+    height: 30px; /* Set the height to make the button taller */
+    font-size: 18px; /* Increase the font size for larger text */
+    background-color: #4d8ba0;
+    color: #0b0909;
+    border: none;
+    cursor: pointer;
+    font-weight: bolder;
+}
+.blur-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+  }

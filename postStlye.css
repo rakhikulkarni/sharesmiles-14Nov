@@ -1,0 +1,12 @@
+h1{
+    font-weight: bold;
+    font-style: oblique;
+}
+input[type="text"]{
+width: 600px;
+font-size: 16px;
+}
+body{
+    text-align: center;
+    background-color: rgb(192, 172, 209) ;
+}

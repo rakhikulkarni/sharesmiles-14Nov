@@ -2,7 +2,7 @@ const con = require("./db_connect");
 
 async function createTable() {
   let sql = `
-    CREATE TABLE IF NOT EXISTS users (
+    CREATE TABLE IF NOT EXISTS User (
       UserId INT NOT NULL AUTO_INCREMENT,
       UserName VARCHAR(25) NOT NULL,
       Password VARCHAR(255) NOT NULL,
@@ -35,18 +35,32 @@ async function login(user) {
 
 // Register (Create) New User
 async function register(user) {
-  let userResult = await getUser(user.username)
-  if(userResult.length > 0) throw Error("Username already in use!!")
-
-  let sql = `
-    INSERT INTO users(UserName, Password, Email)
-    VALUES("${user.username}", "${user.password}", "${user.email}")
-  `
-
-  await con.query(sql)
-  const newUser = await getUser(user.username)
-  return newUser[0]
-}
+    try {
+      let userResult = await getUser(user.username);
+  
+      // Check if the username already exists
+      if (userResult.length > 0) {
+        throw Error("Username already in use!!");
+      }
+  
+      // Continue with the registration process if the username is unique
+      let sql = `
+        INSERT INTO User(UserName, Password, Email)
+        VALUES("${user.username}", "${user.password}", "${user.email}")
+      `;
+  
+      await con.query(sql);
+      
+      // Fetch the newly registered user for response
+      const newUser = await getUser(user.username);
+      return { ...newUser[0], Password: undefined };
+    } catch (error) {
+      console.error('Error in register:', error);
+      throw error;
+    }
+  }
+  
+  
 
 // Update - CRUD
 async function editUser(user) {
@@ -64,8 +78,8 @@ async function editUser(user) {
 
 // Delete User 
 async function deleteUser(user) {
-  let sql = `DELETE FROM users
-    WHERE UserId = ${user.UserId}
+  let sql = `DELETE FROM User
+    WHERE user_id = ${user.user_id}
   `
   await con.query(sql)
 }
@@ -76,9 +90,8 @@ async function getUser(username) {
     SELECT * FROM User
     WHERE UserName = "${username}" 
   `
-  return await con.query(sql)
-  console.log('Received request for getUser with username:', username);
-
+  console.log('SQL Query:', sql);
+  return await con.query(sql);
 
 }
 

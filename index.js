@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -6,6 +7,8 @@ app.use(express.json()); // parse JSON bodies
 
 const userRoutes = require('./server/routes/user')
 const postRoutes = require('./server/routes/post')
+
+const { login } = require('./server/models/user');
 //route to at least one other entity that is NOT user/customer/etc.
 
 //CORS middleware

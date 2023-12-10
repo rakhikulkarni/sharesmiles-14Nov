@@ -13,7 +13,6 @@ const posts = [
     },
 
 ];
-console.log('Hi');
 
 let getPosts = () => posts;
 module.exports ={getPosts};

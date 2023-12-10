@@ -9,6 +9,7 @@ const userRoutes = require('./server/routes/user')
 const postRoutes = require('./server/routes/post')
 
 const { login } = require('./server/models/user');
+const { getUser } = require('./server/models/user');
 //route to at least one other entity that is NOT user/customer/etc.
 
 //CORS middleware

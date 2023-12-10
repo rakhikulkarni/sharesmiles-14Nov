@@ -4,9 +4,10 @@ const router = express.Router()
 
 router
 
-.get('/getAllUsers', async (req, res) => {
+.get('/getUser', async (req, res) => {
   try {
-    const users = await User.getUsers();
+    const username = req.query.username; 
+    const users = await User.getUser(username);
     res.send(users)
   } catch(err) {
     res.status(401).send({message: err.message})

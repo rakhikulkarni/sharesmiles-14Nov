@@ -73,10 +73,13 @@ async function deleteUser(user) {
 // Useful functions
 async function getUser(username) {
   let sql = `
-    SELECT * FROM users 
+    SELECT * FROM User
     WHERE UserName = "${username}" 
   `
   return await con.query(sql)
+  console.log('Received request for getUser with username:', username);
+
+
 }
 
-module.exports = {login, register, editUser, deleteUser}
+module.exports = {login, register, editUser, deleteUser,getUser}

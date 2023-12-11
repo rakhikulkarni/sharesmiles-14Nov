@@ -8,8 +8,10 @@ app.use(express.json()); // parse JSON bodies
 const userRoutes = require('./server/routes/user')
 const postRoutes = require('./server/routes/post')
 
+
 const { login } = require('./server/models/user');
 const { getUser } = require('./server/models/user');
+
 //route to at least one other entity that is NOT user/customer/etc.
 
 //CORS middleware
@@ -21,6 +23,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/users', userRoutes)
+app.use('/posts', postRoutes)
 app.use('/posts', postRoutes)
 // app.use for routes above
 

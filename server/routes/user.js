@@ -24,7 +24,7 @@ router
   }
 })
 
-// register route
+// register route 
 .post('/register', async (req, res) => {
   try {
     const user = await User.register(req.body)

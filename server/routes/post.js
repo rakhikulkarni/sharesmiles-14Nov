@@ -15,6 +15,17 @@ router
     }
   })
 
+  .get('/getUserPosts/:userID', async (req, res) => {
+    const userID = req.params.userID; // Access userID from query parameters
+    try {
+      console.log('usse'+userID);
+      const posts = await Post.getUserPosts(userID);
+      res.send(posts);
+    } catch (err) {
+      res.status(500).send({ message: err.message });
+    }
+  })
+
   // Get a specific post by postId
   .get('/getPost/:postId', async (req, res) => {
     const postId = req.params.postId;

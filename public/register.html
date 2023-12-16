@@ -8,7 +8,7 @@
     <body>
         <br><br>
         <header>
-            <h1>ShareSmiles</h1>
+            <h1>TaskTracker</h1>
         <nav>
             <button><a href="login.html">Login</a></button>
             <button><a href="register.html">Register</a></button>
@@ -16,26 +16,27 @@
         <br><br>
         </header>
         <form id="registrationForm">
+            <div class="error" id="registerError"></div>
             <label for="fname">First Name</label>
             <input type="text" id="fname" required>
             <br><br>
             <label for="lname">Last Name</label>
             <input type="text" id="lname" required>
             <br><br>
-            <label for="useremail">Email ID</label>
-            <input type="email" id="useremail" required>
+            <label for="username">User Name</label>
+            <input type="text" id="username" required>
             <br><br>
             <label for="pwd">Password</label>
-            <input type="password" id="pwd" required>
+            <input type="password" id="pwd">
             <br><br>
             <input type="submit" value="Register">
          </form>
-         
-         <script src="./scripts/RegisterUser.js"></script>
+         <script type="module" src="scripts/loginUser.js"></script>
          <br>
          <footer>
-            <h6>ShareSmiles &copy;</h6>
+            <h6>TaskTracker &copy;</h6>
         </footer>
-        <link rel="stylesheet" href="registerstyle.css">      
+        <link rel="stylesheet" href="registerstyle.css">   
+        <script type="module" src="scripts/RegisterUser.js"></script>   
     </body>
 </html>

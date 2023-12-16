@@ -7,7 +7,7 @@
     </head>
     <br><br>
     <header>
-        <h1>ShareSmiles</h1>
+        <h1>TaskTracker</h1>
     <nav>
         <button><a href="login.html">Login</a></button>
         <button><a href="register.html">Register</a></button>
@@ -16,14 +16,19 @@
     </header>
     <body>
         <form id="contentForm">
-        <label for="post_content">Create yout post here</label>
+        <div class="error"></div>
+        <label for="postContent">Add your activity</label>
         <br>
-        <input type="text" id="post_content" required>
+        <input type="text" id="postContent" required>
         <br><br>
-        <input type="submit" value="POST">
+        <input type="submit" value="Add to ToDo">
         <link rel="stylesheet" href="postStlye.css">
     </form>
-    
-    <script src="./scripts/post.js"></script>
+    <div id="postList">
+        <ul id="list"></ul>
+    </div>
+    <link rel="stylesheet" href="postStyle.css">
+    <script type="module" src="scripts/main.js"></script>	
+    <script type="module" src="scripts/post.js"></script>
     </body>      
 </html>

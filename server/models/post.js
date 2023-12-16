@@ -2,13 +2,27 @@
 
 const con = require("./db_connect");
 
+async function createTable() {
+  let sql = `
+  CREATE TABLE IF NOT EXISTS Post(
+    postId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userID INT NOT NULL,
+    postContent TEXT NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);`
+
+      await con.query(sql)
+}
+
+createTable()
+
 // Create a new post
 async function createPost(post) {
   let sql = `
-    INSERT INTO Post (post_content, user_id)
-    VALUES("${post.post_content}", ${post.user_id})
+    INSERT INTO Post (postContent, userId)
+    VALUES("${post.postContent}", ${post.userId})
   `;
-
+console.log(sql);
   const result = await con.query(sql);
   return result.insertId;
 }
@@ -21,7 +35,8 @@ async function getAllPosts() {
 
 // Read a specific post by postId
 async function getPostById(postId) {
-  let sql = `SELECT * FROM Post WHERE post_id = ${post_id}`;
+  let sql = `SELECT * FROM Post WHERE postId = ${postId}`;
+  console.log(sql)
   return await con.query(sql);
 }
 
@@ -29,8 +44,8 @@ async function getPostById(postId) {
 async function updatePost(post) {
   let sql = `
     UPDATE Post
-    SET post_content = "${post.post_content}"
-    WHERE post_id = ${post.post_id}
+    SET postContent = "${post.postContent}"
+    WHERE postId = ${post.postId}
   `;
 
   await con.query(sql);
@@ -38,8 +53,15 @@ async function updatePost(post) {
 
 // Delete a post
 async function deletePost(postId) {
-  let sql = `DELETE FROM Post WHERE post_id = ${postId}`;
+  let sql = `DELETE FROM Post WHERE postId = ${postId}`;
   await con.query(sql)
 }
 
-module.exports = { createPost, getAllPosts, getPostById, updatePost, deletePost };
+async function getUserPosts(userID) {
+  console.log('hhh')
+  let sql = `SELECT * FROM Post WHERE userID = ${userID}`;
+  console.log(sql);
+  return await con.query(sql)
+}
+
+module.exports = { createPost, getAllPosts, getPostById, updatePost, deletePost ,getUserPosts};

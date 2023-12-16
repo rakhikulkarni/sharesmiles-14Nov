@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors = require('cors');
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -11,6 +12,7 @@ const postRoutes = require('./server/routes/post')
 
 const { login } = require('./server/models/user');
 const { getUser } = require('./server/models/user');
+const { getAllUserPosts } = require('./server/models/post'); 
 
 //route to at least one other entity that is NOT user/customer/etc.
 
@@ -24,7 +26,7 @@ app.use(function(req, res, next) {
 
 app.use('/users', userRoutes)
 app.use('/posts', postRoutes)
-app.use('/posts', postRoutes)
+// app.use('/posts', postRoutes)
 // app.use for routes above
 
 const PORT = process.env.PORT || 3000

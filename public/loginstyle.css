@@ -15,7 +15,7 @@ h1{
 body {
     margin: 0;
     padding: 0;
-    background-image: url('images/loginimage.jpg'); /* Replace with your background image URL */
+    background-image: url('/public/images/todo.jpeg'); /* Replace with your background image URL */
     background-size: cover;
     background-position: center;
     height: 100vh;
